@@ -6,4 +6,4 @@ class ToDoSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ToDo
-        fields = ('id', 'title', 'completed', 'order')
+        fields = ('id', 'title', 'completed', 'order', 'url')
