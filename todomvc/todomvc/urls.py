@@ -21,7 +21,7 @@ from todo.views import ToDoViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'contacts', ToDoViewSet)
+router.register(r'todos', ToDoViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
