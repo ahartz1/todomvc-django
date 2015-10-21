@@ -27,5 +27,16 @@ def test_post_todos_api():
     assert 'shovel snow' in res.text
 
 
+def test_delete_todos_api():
+    res = requests.get(todo_url)
+    print(res.text)
+    # print(res.text[-1]['id'])
+    task_url = res.text[-1]['id']
+    res_del = requests.delete(task_url)
+
+    print(res_del.status_code)
+    assert 'shovel snow' not in res.text
+
+
     # with open('test.txt', 'w') as f:
     #     f.write(res)
