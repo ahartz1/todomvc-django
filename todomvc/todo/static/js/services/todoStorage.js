@@ -51,10 +51,19 @@ angular.module('todomvc')
 
 				angular.copy(incompleteTodos, store.todos);
 
-				return store.api.delete(function () {
-					}, function error() {
-						angular.copy(originalTodos, store.todos);
-					});
+				// return store.api.delete(function () {
+				// 	}, function error() {
+				// 		angular.copy(originalTodos, store.todos);
+				// 	});
+				var last;
+				completeTodos.forEach(function(todo) {
+					last = store.api.delete({ id: todo.id },
+						function() {
+						}, function error() {
+							angular.copy(originalTodos, store.todos);
+						});
+				});
+				return last;
 			},
 
 			delete: function (todo) {
