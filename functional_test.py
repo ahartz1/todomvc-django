@@ -31,12 +31,22 @@ def test_post_todos_api():
     assert 'shovel snow' in res.text
 
 
-
 def test_get_todos_api():
     res = requests.get(todos_url)
 
     assert res.status_code == 200
     assert 'shovel snow' in res.text
+
+
+def test_put_todos_api():
+    payload = {'title': 'wait for snow to melt'}
+    existing_task_url = requests.get(todos_url).json()[-1]['url']
+    res = requests.put(existing_task_url, data=payload)
+
+    print(res.status_code)
+
+    res = requests.get(todos_url).json()
+    assert 'wait for snow to melt' in res[0].values()
 
 
 def test_delete_todos_api():
