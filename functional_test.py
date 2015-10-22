@@ -55,7 +55,3 @@ def test_delete_todos_api():
     res_del = requests.delete(task_url)
 
     assert res_del.status_code == 204
-
-
-    # with open('test.txt', 'w') as f:
-    #     f.write(res)
